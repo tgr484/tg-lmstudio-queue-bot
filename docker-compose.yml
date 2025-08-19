@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  tg-bot:
+    build: .
+    container_name: tg-lmstudio-queue-bot
+    restart: unless-stopped
+    env_file:
+      - .env
+    # Для доступа к сервису на хосте (LM Studio на 1234):
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    # Если на Linux host.docker.internal не работает, можно включить host‑сеть:
+    # network_mode: "host"
